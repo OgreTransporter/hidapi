@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>HIDAPI Test Application</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="layMain">
+    <item>
+     <widget class="QLabel" name="lblDescription">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h1&gt;HIDAPI Test Tool&lt;/h1&gt;&lt;p&gt;Select a device and press Connect.&lt;/p&gt;&lt;p&gt;Output data bytes can be entered in the Output section, separated by space, comma or brackets. Data starting with 0x is treated as hex. Data beginning with a 0 is treated as octal. All other data is treated as decimal.&lt;/p&gt;&lt;p&gt;Data received from the device appears in the Input section.&lt;/p&gt;&lt;p&gt;Optionally, a report length may be specified. Extra bytes are padded with zeros. If no length is specified, the length is inferred from the data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="layGrid1">
+      <item row="0" column="0">
+       <widget class="QListWidget" name="lbDevices">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <layout class="QVBoxLayout" name="layVert1">
+        <item>
+         <widget class="QPushButton" name="btnConnect">
+          <property name="text">
+           <string>Connect</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnDisconnect">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Disconnect</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnReScanDevices">
+          <property name="text">
+           <string>Re-Scan devices</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="grpOutput">
+      <property name="title">
+       <string>Output</string>
+      </property>
+      <layout class="QGridLayout" name="layGrid2">
+       <item row="2" column="2">
+        <widget class="QPushButton" name="btnSendFeatureReport">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Send Feature Report</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="lblLength">
+         <property name="text">
+          <string>Length</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="btnSendOutputReport">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Send Output Report</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="tbLengthFeatureSend"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lblData">
+         <property name="text">
+          <string>Data</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="tbDataFeatureSend"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="tbDataOutput">
+         <property name="text">
+          <string>1 0x81 0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="tbLengthOutput"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLineEdit" name="tbDataFeatureGet"/>
+       </item>
+       <item row="3" column="2">
+        <widget class="QPushButton" name="btnGetFeatureReport">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Get Feature Report</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="grpInput">
+      <property name="title">
+       <string>Input</string>
+      </property>
+      <layout class="QVBoxLayout" name="layVert2">
+       <item>
+        <widget class="QPlainTextEdit" name="tbInput"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layHor1">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnClear">
+           <property name="text">
+            <string>Clear</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
